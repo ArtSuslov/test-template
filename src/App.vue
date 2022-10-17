@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import Element from './components/Element.vue'
 import jsonina from './jsonina.json' 
+import { useWeb3 } from '@distributedlab/web3-provider'
+import { onMounted } from 'vue'
+
+const web3 = useWeb3()
+
+onMounted(async () => {
+  await web3.init()
+  console.log(web3.providers.value)
+  console.log(window.ethereum, 'window ethereum')
+})
 </script>
 
 <template>
